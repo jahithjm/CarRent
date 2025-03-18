@@ -1,8 +1,9 @@
-<!-- Find a car form -->
+
+    <!-- Find a car form -->
 <section class="find-a-car">
     <div class="container">
       <form
-        action="/s.html"
+        action="{{route('car.search')}}"
         method="GET"
         class="find-a-car-form card flex p-medium"
       >
@@ -347,3 +348,4 @@
     </div>
   </section>
   <!--/ Find a car form -->
+
