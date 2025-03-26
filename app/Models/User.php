@@ -3,9 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Car;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -20,6 +23,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'google_id',
+        'facebook_id',
         'password',
     ];
 
@@ -44,5 +49,13 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function favoriteCars():BelongsToMany{
+      return $this->belongsToMany(Car::class,'user_id','car_id');
+    }
+
+    public function cars():HasMany{
+        return $this->hasMany(Car::class);
     }
 }
