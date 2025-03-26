@@ -7,4 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class CarImages extends Model
 {
     //
+    use HasFactory;
+    public $timestamps = false;
 }
